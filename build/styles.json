@@ -1,0 +1,492 @@
+{
+  "yacimientos": {
+    "field": "ST_YACIM",
+    "styles": {
+      "Uranio en rocas volcánicas": {
+        "type": "icon",
+        "iconUrl": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAwAAAAMCAYAAABWdVznAAAACXBIWXMAAA7EAAAOxAGVKw4bAAAAz0lEQVQokWNhIBGwwBjZEaY1+BTy8rBv75hz5Cxcw6t3X5ujvHWxKn768jPDuWvPFRgYGFLgGtQUhBkCnDSwarhx/w3DuWvPUZ1ELCBfw4fPP34yMDCwY1P08NlHBnZ2lqcoGt5+/H7v89dfmrzcbBgath66/UNQgm8aigZFccGQ4p6dp/rLPLi5OVnhimesPvvv779/3W0T975E0dA+//C1qmQri5y2bUtkJPjUWJmZWJ6+/Pycm4u1btqK0wuxerpt7rErDAwMBkR5mlgAANn4Rmcq/rHgAAAAAElFTkSuQmCC",
+        "iconSize": 9.0,
+        "alpha": 1.0
+      },
+      "Óxidos de Fe-Cu-Au (IOCG)": {
+        "type": "icon",
+        "iconUrl": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABMAAAATCAYAAAByUDbMAAAACXBIWXMAAA7EAAAOxAGVKw4bAAAAV0lEQVQ4jWNhoCJgGRqGqTAw/JBgYPhNrOYPDAw/rzAwiGA1TIGBgT2FgYGdWMNmMjD8x+kySsGoYaOGDW3DbjIw/F9AguanaPpROI8ZGJgek++wQRxmAK3CDKC9rWNAAAAAAElFTkSuQmCC",
+        "iconSize": 14.0,
+        "alpha": 1.0
+      },
+      "Vetas": {
+        "type": "icon",
+        "iconUrl": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAaCAYAAACO5M0mAAAACXBIWXMAAA7EAAAOxAGVKw4bAAAA7UlEQVQ4je3PvWrCcBjF4V8+NwmNpKIFQVw71N1F0gwFnTo55AoMmQoiXbJZTYfcgjfg4rW4FIpTlgx1KAhK/RhCh+YfqBbq5NkOPPC+R+XIqP8PfZ/edsuVZfESBHzlQs9j1unQNgyYTHgEGgLs92k6Dg+2nXbT5E7TeIoiXn9AVaVr2yjfvV6Hcpl7yMBSievsv4UCN8JpWUbKGasI8Ldc4BmgJLEX4HLJKgs3Gz4EmCTMFwuo1dK+XkMc8y7AYpEwivDHYyq6DqMRn5rGswCDgN1gQMt1mcoyerWKF4bEuWOGQ96A25NX/wkeAKUaMcg35yKGAAAAAElFTkSuQmCC",
+        "iconSize": 7.0,
+        "alpha": 1.0
+      },
+      "Sulfuro masivo volcanógenico de Pb-Zn-Cu": {
+        "type": "icon",
+        "iconUrl": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAMCAYAAABiDJ37AAAACXBIWXMAAA7EAAAOxAGVKw4bAAABLUlEQVQokWNhoDJgIVIdEwMDAxsDA8MPSgyUkGGT6eZk4TTkZubmYmNg+/f57+fvb/+8ffLu17uJfxj+7CDaQDl2uQIhVqGKENEQcVFWURS5v///6ux9v1d774e95z78+RDLwMDwGa+BchxylUY8RtWeQp7c2CxjZmRmcBNykzXkNRTpe9y3/t2fdz4MSEGBYiAvO6+aHLtcCS7DkIEoqyhnpnSmUd/jvs7v/77nYzVQlFF0arBosBAhw+C+YZcTVOVUNb/09ZIMAwPDE3QD2YXZhNW4mLiINY+BgYGBwU/YT+bS10sRDAwMPegGKiuwK/CTZBoDA4Msh6w0KxOr5u9/vxnQDRRd/2b9981vN78h1dA///7IwtjIBh788/+P5J//f0g1DwUQm1OIBgAAxFMcN2YduAAAAABJRU5ErkJggg==",
+        "iconSize": 15.0,
+        "alpha": 1.0
+      },
+      "Sulfuro masivo volcanogénico de Cu-Zn-Pb-Au-Ag": {
+        "type": "icon",
+        "iconUrl": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAMCAYAAABiDJ37AAAACXBIWXMAAA7EAAAOxAGVKw4bAAABKElEQVQoka3TMUuEYBzH8R8hSolkYZRPOgWPJ7bk0urg2AtoEW46dDkbGopeQRRCg+AbEMfW1nDvVRyIIC5xXB6P0XRwJ1d51Hd64Hn48OcPD4d/juv5bgsAD+DjL+ARpfRBFMUzWZZ3BEH4rOt6VhTFpCiKJ8bYS2/QMIwrQshNGIaHmqat3DHGTrMss9I0fauqygPw/iM4GAxuXde9Gw6H4toJOA6e5+mO4yi+7z+XZXmBpVWsgIqiUNM0r7/DltN1fTuKIns0Gt1Pp9NwLaiqajwej/d/wxYZhrFn2/Z5nucagEkXFAghVJKkvh4AIAgCLc/zSwCPXfDEsqzdjTQAlNJjnufN+XyOLngQx/EsSZJqU7RtW31xXgZfm6ZRN8W69f0pvfsCOYVTghI/xFAAAAAASUVORK5CYII=",
+        "iconSize": 15.0,
+        "alpha": 1.0
+      },
+      "Sulfuros masivos volcanogénicos de Cu-Zn-Pb-Au-Ag": {
+        "type": "icon",
+        "iconUrl": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAMCAYAAABiDJ37AAAACXBIWXMAAA7EAAAOxAGVKw4bAAABKElEQVQoka3TMUuEYBzH8R8hSolkYZRPOgWPJ7bk0urg2AtoEW46dDkbGopeQRRCg+AbEMfW1nDvVRyIIC5xXB6P0XRwJ1d51Hd64Hn48OcPD4d/juv5bgsAD+DjL+ARpfRBFMUzWZZ3BEH4rOt6VhTFpCiKJ8bYS2/QMIwrQshNGIaHmqat3DHGTrMss9I0fauqygPw/iM4GAxuXde9Gw6H4toJOA6e5+mO4yi+7z+XZXmBpVWsgIqiUNM0r7/DltN1fTuKIns0Gt1Pp9NwLaiqajwej/d/wxYZhrFn2/Z5nucagEkXFAghVJKkvh4AIAgCLc/zSwCPXfDEsqzdjTQAlNJjnufN+XyOLngQx/EsSZJqU7RtW31xXgZfm6ZRN8W69f0pvfsCOYVTghI/xFAAAAAASUVORK5CYII=",
+        "iconSize": 15.0,
+        "alpha": 1.0
+      },
+      "Stockworks": {
+        "type": "icon",
+        "iconUrl": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABMAAAATCAYAAAByUDbMAAAACXBIWXMAAA7EAAAOxAGVKw4bAAACHklEQVQ4jb3UT0iacRzH8bdp2hJzqfMwLwsPXjysdttGl7ERCNvRIesgW4FhRGHdgucQQf9IQZg8uajDWmMUYzcHGxu7LFgnLxKGw01kaxpJZva42MHDM/foLBj7np7P73m+L/h+4fdo+Iel+W+YIGDNZHCXy9i0Wr4YjTxfWODHubDJSbrzeSLpNNe8XtQWC+RyEAoR8vn42NaGb3GReFNsdBSPyUTE48GwuQl2e/XcaISuLtQjI9xYWeHD4CADosiLhlgggNNi4bHbjaFQqD+KSgVeL0ZRRPT7iYfDJOpi2SxPXC46kkk4PIS9PUgm5ff5vJx7e7kYjbIMXFdgw8N0qFRcTaWq+ehIieVytdlspicQQD8/T7EGOz7mnseD1uGo5kIBDg6gr09uTiRqs82Gbn2du8CzGkySuNzZWX9PjcpshtNTbIoxdTrS+/tgtZ4dy+WgtZXPCszh4GUkwondjhagXIZ4HIpFuXlrC8JhOe/sUHY6eaXAxsYoDQ3x3ufjtlpd3dnGBni9cnOlAn5/9VmSYHqad4LAiQIDMBh4tLbGp/5+LjUbURT53t7Ow9/ParCZGdLj4zxYXeWpy4WlHiJJEI3yrVjkfjBIpiEGMDfH64kJukMhliWJm9vbXDCZqsve3aU0NcVbvZ6BYJDsn711L/rsLF+BO4KAJhbjVqnEFZ2OVEsLb5aW+Nlo9Ga/oAoQ+9s3Z8bOW78AU2K29cEmoJsAAAAASUVORK5CYII=",
+        "iconSize": 14.0,
+        "alpha": 1.0
+      },
+      "Stockwork": {
+        "type": "icon",
+        "iconUrl": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABMAAAATCAYAAAByUDbMAAAACXBIWXMAAA7EAAAOxAGVKw4bAAACHklEQVQ4jb3UT0iacRzH8bdp2hJzqfMwLwsPXjysdttGl7ERCNvRIesgW4FhRGHdgucQQf9IQZg8uajDWmMUYzcHGxu7LFgnLxKGw01kaxpJZva42MHDM/foLBj7np7P73m+L/h+4fdo+Iel+W+YIGDNZHCXy9i0Wr4YjTxfWODHubDJSbrzeSLpNNe8XtQWC+RyEAoR8vn42NaGb3GReFNsdBSPyUTE48GwuQl2e/XcaISuLtQjI9xYWeHD4CADosiLhlgggNNi4bHbjaFQqD+KSgVeL0ZRRPT7iYfDJOpi2SxPXC46kkk4PIS9PUgm5ff5vJx7e7kYjbIMXFdgw8N0qFRcTaWq+ehIieVytdlspicQQD8/T7EGOz7mnseD1uGo5kIBDg6gr09uTiRqs82Gbn2du8CzGkySuNzZWX9PjcpshtNTbIoxdTrS+/tgtZ4dy+WgtZXPCszh4GUkwondjhagXIZ4HIpFuXlrC8JhOe/sUHY6eaXAxsYoDQ3x3ufjtlpd3dnGBni9cnOlAn5/9VmSYHqad4LAiQIDMBh4tLbGp/5+LjUbURT53t7Ow9/ParCZGdLj4zxYXeWpy4WlHiJJEI3yrVjkfjBIpiEGMDfH64kJukMhliWJm9vbXDCZqsve3aU0NcVbvZ6BYJDsn711L/rsLF+BO4KAJhbjVqnEFZ2OVEsLb5aW+Nlo9Ga/oAoQ+9s3Z8bOW78AU2K29cEmoJsAAAAASUVORK5CYII=",
+        "iconSize": 14.0,
+        "alpha": 1.0
+      },
+      "Skarn": {
+        "type": "icon",
+        "iconUrl": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAACXBIWXMAAA7EAAAOxAGVKw4bAAABpUlEQVQ4jdXUT0jTYRzH8ff2228yE2GzgTql1ENenDH/ji55yIPeYwhBl25qjNxlhIKwgyaJF29etMRI6NhlB8EgRGF/qoFopPabixq5tUW4H8sOIm5jj/sNPOTn+Hz5vp7n+8DzGLjkGK40aDXf4JGthzaTmRodnPyOE1c2+ZA8YAH4oRmsquW+3cXInSc4JRkpt5bNoK7P0B96wfyfn6yWBM2NuPqn8TX10VxsM8mIfNdLX2MX9W896NLfeH0RaG0bwiPCctNyj1u3HzD27hlr5IyfBzZ04+kdxlEKO4tzlO4vftzRAN6iYF07HXpZKweSDLUddEYD52t5oKmGOu3caa5Z8nvyQL1EGec7jc6AUQhm0iTLBY9TJITg0T6Rv6r2e8yqkDggIgTVGN7gSwYdD7FoAQOLxNN7PBWCuxsolTd5rrQy2dCL/iLs63vU2BYzSoioEAQIv8KnM2KM7zBmd1FZOH5WhfAy6cMAU5/eMFXYX/Qth5aYkB+z7B9nttqGvaKK6yfAcYrvvxSCKrg/rvC5WK/wt9maYxsYENVF+f8/2H9ZwXNRKq0/VgAAAABJRU5ErkJggg==",
+        "iconSize": 15.0,
+        "alpha": 1.0
+      },
+      "Sedex en rocas carbonatadas": {
+        "type": "icon",
+        "iconUrl": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABYAAAAUCAYAAACJfM0wAAAACXBIWXMAAA7EAAAOxAGVKw4bAAAB00lEQVQ4jc3TMU9TQQDA8f+91/d8bV9okbYYXqR1AEoQBz+AKYv4CXRjwcVP4KIbfgHDysaAfgHWhokOErSDA4MSGtMGYprS95r29e4cjElb+4oMBv7b5S6/u1zuYvynYjcCl0qlWPAzuJ8V2YKN/UChdFd0vzVpfnfSTq1cLvf/GV5fWb+bttJvp+X0Q/vCXnW1m0uohDC1CYAUkkAEun3R/rG0ulRtms0vrTutd/uV/VYkvPFo4+WMnNla6CzM/oEiEoAHeFLIZyfhyYvU49TrvaO9D2PhgixseaE3O0kczdQmxbCYT+jEG2A87CjnWuhgcRXPDY6H4IpTYa2zRlzFr4V2RIfD+GEqEp4L5zgzzwhjIVNqiqzM4mgnEjs3z7k0LrG0hRd63UjYEAaLvUUAfMOnYTZoG20AFOr3GgwAXOWSURnm+/MAHDvHOhIeLKmSJFUyavrKbubn3QpYM3TFw7Av/LpE3jOZ+Ov+SiLxhd+IhF3tPq04lY85mSvmwzwW1kQwJOTUOlV1s/5Z9/XzSHi7ul0FljeXN5/UnNorB2fFUlbGwEgaGAlAa6F9ifR7otcICKq2Zb/f/bR7NLrp2Dve+bpzABxMPO4V3f5XMdovvUWlK/QSIe0AAAAASUVORK5CYII=",
+        "iconSize": 16.0,
+        "alpha": 1.0
+      },
+      "Red Bed (Capas Rojas)": {
+        "type": "icon",
+        "iconUrl": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABMAAAATCAYAAAByUDbMAAAACXBIWXMAAA7EAAAOxAGVKw4bAAABs0lEQVQ4jdXRO0hbARTG8X/kJqZeDcZU0GhsqdUoDtGiQwh1DfgChUJBrU4FJ0EcnFxFQXRRWtDJtqBOCiIOtjYogojLNTr0ES0pFM29Coka83TU1FyTFhfP+J1zfnA4AvdYwoPE9EADmUIXcU0pobAEzAHLQDAdTAc40Qnd6LU2rGYt1U8sGLI0nJyZ2PpezLc/g1yG3cAssAKEkmOGRxJFJhF7mRmjqEnoGcUCnLYCnDaQ/fms7VXiVQaIRB3JsZcVO3iOX2MU77geMOUUoRMMCNomIlGVM6ssb/EcteBVsijOU8e8Mvj8mwSDrptxIjay6Kejvo+13Xe8skNG4qUAxOLweVdGCbT/3br9zQ+u9zisfex4yql9dhvb/hkmEh0DfKkxgOqnbSxsS1SYNWTrr/NAEKRDL6fnQ8nWkmMTK26aX3zk634HjTXX+ark5zL+BoiljwFYSnv4cdTKL59IyWM49IESWOfiYl1tRR2bnA/QWd/LqjRFYS58ccsoZ52q83diADOuaRzWfj5tlBOLjQLy/2MAdc/bODie4rcynGo0NTa+tA84Us6lhf1D3St2Bb/UhM5/jn6NAAAAAElFTkSuQmCC",
+        "iconSize": 14.0,
+        "alpha": 1.0
+      },
+      "Pórfidos de Cu-Mo": {
+        "type": "icon",
+        "iconUrl": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABYAAAAUCAYAAACJfM0wAAAACXBIWXMAAA7EAAAOxAGVKw4bAAABiklEQVQ4jc3VsWsTYRQA8F8uh41JitRKzWL/hAqFU3AUHMTBIiIO4uQgWHSyIkg7iCBKBykVB5daXKz4B7iIg1NBHByEDqUiGG0wUmtbudydSwwipm0kBd/4vfd+vPeWL7RDEf4PcAm9qHYXLhmxbq/UVHfhsktyila7Cxd8EclkGMDn7sBlJ+0XKIm9dUrqQXfgXqMOCZT1WHTBt87h80LX9RmUt6v1WhMaxm7MGFYRt3KpWN0HsWncawc/0lBVM2tQ4Jx9QuTR16wYlxMLpXhq2Ts9MjfwZLOJ4bnMkCUz7htyVcWAXCtbwVdMeu+jKs5icatT/IpPOK7umgk3TQoVW6sz7oc1zzDGb2fZBgyZ0Lx+FJvtCQo4ILTktY2/o1vB9BsVCVUl7lqWKrhsj8Pyai7aMPsvcGDFMau+m5BI3EHdbVOOCqyImrusdQofsa7kpQWpM3gDEq+8MKfhoLwTEnOdwqfxUOrKH1MtaIhwS2aEzuHHmG+TizEmFbVr3gxuh26rZsd+kJ+jGnAKfCAA2AAAAABJRU5ErkJggg==",
+        "iconSize": 16.0,
+        "alpha": 1.0
+      },
+      "Pórfidos  Cu-Mo": {
+        "type": "icon",
+        "iconUrl": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABYAAAAUCAYAAACJfM0wAAAACXBIWXMAAA7EAAAOxAGVKw4bAAABiklEQVQ4jc3VsWsTYRQA8F8uh41JitRKzWL/hAqFU3AUHMTBIiIO4uQgWHSyIkg7iCBKBykVB5daXKz4B7iIg1NBHByEDqUiGG0wUmtbudydSwwipm0kBd/4vfd+vPeWL7RDEf4PcAm9qHYXLhmxbq/UVHfhsktyila7Cxd8EclkGMDn7sBlJ+0XKIm9dUrqQXfgXqMOCZT1WHTBt87h80LX9RmUt6v1WhMaxm7MGFYRt3KpWN0HsWncawc/0lBVM2tQ4Jx9QuTR16wYlxMLpXhq2Ts9MjfwZLOJ4bnMkCUz7htyVcWAXCtbwVdMeu+jKs5icatT/IpPOK7umgk3TQoVW6sz7oc1zzDGb2fZBgyZ0Lx+FJvtCQo4ILTktY2/o1vB9BsVCVUl7lqWKrhsj8Pyai7aMPsvcGDFMau+m5BI3EHdbVOOCqyImrusdQofsa7kpQWpM3gDEq+8MKfhoLwTEnOdwqfxUOrKH1MtaIhwS2aEzuHHmG+TizEmFbVr3gxuh26rZsd+kJ+jGnAKfCAA2AAAAABJRU5ErkJggg==",
+        "iconSize": 16.0,
+        "alpha": 1.0
+      },
+      "Pórfidos de Cu-Au": {
+        "type": "icon",
+        "iconUrl": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABYAAAAUCAYAAACJfM0wAAAACXBIWXMAAA7EAAAOxAGVKw4bAAAB1ElEQVQ4jc3VP2gTYRjH8e+9eXu5NGlKgxatIJ2sixWFCApudRAHq0hxECeHQgtuFcFNurhJERwcbIuIBgRXXfxD6VBR6SR0sBaHqwFjbHN3vcs9r0MwgzSNkSv4jO/veT+8PM/wanap9P8AZ4EewE0WduxRwnoBkZlk4Yw9gUU3fpgo7LDhFzHGAP3At2TgjH2evqzCsSNWyxcRuZ8UPMnQgCJjp3Er1/DCjuGrKOsm+cxBlLKbpz99zaH9YGt4uXycQi5qZkYiNoKv1OUecLcVPIcYl6o3T3+vYuTIHpSClAU5p9Fx5bRFXTTGwNtPZdbKaQy3gKftRvECwzDr1Vmevxtm7OQ++rJWMy3kYDOA0uIa32sucBn43G4Uv2sdOMtmcIO5N7cZH9GkuxqJGJh9vUUQPQOmgGg7YKflGbReIu9AugvqAiKNOe/Na9wf74nibdF2MPQ4kwwNaCq1mCeLZYw4XDjRy+EDKareOJE//y+wohacwQ9rPHwVI+YOUOHxwgzHBhXeVhHoBrxO4VOE9SzLX1YQMwZ8BEDMAh9WS4g5Sip1jjgudQpfAh4g5vofr1pBTBGYxphRoGP4EbDUIouAKUSKrS7vBLdC/6pn136QX5Nap5zsNWoKAAAAAElFTkSuQmCC",
+        "iconSize": 16.0,
+        "alpha": 1.0
+      },
+      "Pórfidos  Cu-Au": {
+        "type": "icon",
+        "iconUrl": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABYAAAAUCAYAAACJfM0wAAAACXBIWXMAAA7EAAAOxAGVKw4bAAAB1ElEQVQ4jc3VP2gTYRjH8e+9eXu5NGlKgxatIJ2sixWFCApudRAHq0hxECeHQgtuFcFNurhJERwcbIuIBgRXXfxD6VBR6SR0sBaHqwFjbHN3vcs9r0MwgzSNkSv4jO/veT+8PM/wanap9P8AZ4EewE0WduxRwnoBkZlk4Yw9gUU3fpgo7LDhFzHGAP3At2TgjH2evqzCsSNWyxcRuZ8UPMnQgCJjp3Er1/DCjuGrKOsm+cxBlLKbpz99zaH9YGt4uXycQi5qZkYiNoKv1OUecLcVPIcYl6o3T3+vYuTIHpSClAU5p9Fx5bRFXTTGwNtPZdbKaQy3gKftRvECwzDr1Vmevxtm7OQ++rJWMy3kYDOA0uIa32sucBn43G4Uv2sdOMtmcIO5N7cZH9GkuxqJGJh9vUUQPQOmgGg7YKflGbReIu9AugvqAiKNOe/Na9wf74nibdF2MPQ4kwwNaCq1mCeLZYw4XDjRy+EDKareOJE//y+wohacwQ9rPHwVI+YOUOHxwgzHBhXeVhHoBrxO4VOE9SzLX1YQMwZ8BEDMAh9WS4g5Sip1jjgudQpfAh4g5vofr1pBTBGYxphRoGP4EbDUIouAKUSKrS7vBLdC/6pn136QX5Nap5zsNWoKAAAAAElFTkSuQmCC",
+        "iconSize": 16.0,
+        "alpha": 1.0
+      },
+      "Polimetálicos con superposición epitermal": {
+        "type": "icon",
+        "iconUrl": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAaCAYAAAC+aNwHAAAACXBIWXMAAA7EAAAOxAGVKw4bAAACJklEQVQ4jc3UXUjTYRTH8e+mZmCINUcvqxWGL21LncPNadmMMof0RoZEeNmFEHgjQUQgdClddFOrIIIoIxSCMHvB2HK6qWxu2kpygWylczmtCWYg1oXEXPtvurzpXB5+5wPP8/z/J5V1Vup/DuiMmSyEz+Huvf1vQGjiCUFfFZrjD3A8m08OKDSo8DqqkWwXMed/CJxODpid6EChFVGggY6bJyiuzMX1dmxtQFFFPd6RPI6dh7QNkK8W8y3YDhStDZgYN1F6ZHkYoOQwtF0vpPhgLa6ezsSAQtdKYDyLAk2kl74RSgzgdd8HpPEBnTETj62JQ6dAJI6GVWUwYstGqb+Kx3ZNGAhNPiYrOw15fuyxxClQVgP2F1cwGFoxmxeigfLy3Qw6ajh5IXb4T+1VwZAlncnwXaAhGuir9rPl0zxfP2cglQkDP3/A3AzI9nQJHKFliR0VzQx23yJXHXmBleV4A1LZGC7rI+E7eNdrQpZzmSGLHO3R6OHwDIw6f6HU1+GPfE+xz7hVXo/H3odSJyIjM9K3v4Rdua9xdg+vjMcCTrOdnP09DLyqpKpuuTflhynfIkr9WbxuEgMAmyVnGHUGCAVSkGyDvk6Q59+gvyv8d1QYcJin2Vd6B9vzRhRaWFz8zvv+ZqFo/L/xQ+1FJKYGLE83kaduZPqLYCzBQmlZYueBJmaDlxi2tsVLJd5Ibus9dMZ2fB/jRlZfqgIXlxywSq0b+A3g0KaygoyjsAAAAABJRU5ErkJggg==",
+        "iconSize": 12.0,
+        "alpha": 1.0
+      },
+      "Placeres": {
+        "type": "icon",
+        "iconUrl": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAATCAYAAACQjC21AAAACXBIWXMAAA7EAAAOxAGVKw4bAAACO0lEQVQ4jb2R30tTYRzGP0NtgzgcIiUbu7BNvauDhAheeCFeBCNEV7HZCQIRvRjzDwgnm3TpjWzupou8acP5I1HUoYyUFOmAROCNuiSQwTgWyBGDtXG6iOWcc1OInquX93nez/s+37eSf6zK/w40m2ltbWUIYHOTkWSSzWsDLRZaNA31+JivJhN3R0Z4BGC38wZAFLEKAtWHh3wqC7RYaOnt5W0qxc9wmCeFvihic7mI1tZimpjg5cHBeWgxYL8s02CzUaHrTM3N8S7nnZ5yr6eHV8EgTYkE2ZUV+soCt7bodbu5GQjgCIVoOjpCzHltbQwEg9gSCbKDg0xtbNBXtjKgx2I43W4igQCOaBRrOg0GA0QiZ7DFRZxFzp4HNjez29HBr7zXntTXIxqN5xqcSBL3JYkdgNVVqhSFxqJAu50bw8M0FLs5J1lGhLMxGI18U5RLXhiP83Fnhy2AZJI77e089PsR8jNeL1o8jmI2owKkUmQurby+jgxQXU2jw8Gkz4ewu4suCBgMBtA0dJ8PQVW5PT3NgKqyV9jgwqfU1NDQ3c1kKIS0v0+2s5Mvs7M0AXR18Xl+ngfj40i6TnRmhqeF0AvAujr8Xi9SIkHW4yGcTvMemAJIp3nt8dA1NoZzaAhpexu/quIqCVQU5P5+xEyGH8vLvLBaceT7S0vIbjeGqipuKcqfEZUEAtmFBR4D2dzGXsGkYjGeAxX5mVJA8oOqyofRUZ7l1sUyVwH+labxfW2NaLnclYHX1W/addAsmftH3AAAAABJRU5ErkJggg==",
+        "iconSize": 15.0,
+        "alpha": 1.0
+      },
+      "Placer": {
+        "type": "icon",
+        "iconUrl": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAATCAYAAACQjC21AAAACXBIWXMAAA7EAAAOxAGVKw4bAAACO0lEQVQ4jb2R30tTYRzGP0NtgzgcIiUbu7BNvauDhAheeCFeBCNEV7HZCQIRvRjzDwgnm3TpjWzupou8acP5I1HUoYyUFOmAROCNuiSQwTgWyBGDtXG6iOWcc1OInquX93nez/s+37eSf6zK/w40m2ltbWUIYHOTkWSSzWsDLRZaNA31+JivJhN3R0Z4BGC38wZAFLEKAtWHh3wqC7RYaOnt5W0qxc9wmCeFvihic7mI1tZimpjg5cHBeWgxYL8s02CzUaHrTM3N8S7nnZ5yr6eHV8EgTYkE2ZUV+soCt7bodbu5GQjgCIVoOjpCzHltbQwEg9gSCbKDg0xtbNBXtjKgx2I43W4igQCOaBRrOg0GA0QiZ7DFRZxFzp4HNjez29HBr7zXntTXIxqN5xqcSBL3JYkdgNVVqhSFxqJAu50bw8M0FLs5J1lGhLMxGI18U5RLXhiP83Fnhy2AZJI77e089PsR8jNeL1o8jmI2owKkUmQurby+jgxQXU2jw8Gkz4ewu4suCBgMBtA0dJ8PQVW5PT3NgKqyV9jgwqfU1NDQ3c1kKIS0v0+2s5Mvs7M0AXR18Xl+ngfj40i6TnRmhqeF0AvAujr8Xi9SIkHW4yGcTvMemAJIp3nt8dA1NoZzaAhpexu/quIqCVQU5P5+xEyGH8vLvLBaceT7S0vIbjeGqipuKcqfEZUEAtmFBR4D2dzGXsGkYjGeAxX5mVJA8oOqyofRUZ7l1sUyVwH+labxfW2NaLnclYHX1W/addAsmftH3AAAAABJRU5ErkJggg==",
+        "iconSize": 15.0,
+        "alpha": 1.0
+      },
+      "Orogénicos de Au (Pb-Zn-Cu)": {
+        "type": "icon",
+        "iconUrl": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAACXBIWXMAAA7EAAAOxAGVKw4bAAAB6klEQVQ4jdXUsUvjYBjH8W9yJYhLQ6BDcRPvDxCsaZF38wZFqmTpdiq4dT/wplbuKB0cJBYcSrJeFnESOjhIOAqt53KLQ7hVHTtfDDe0b03SlLvB5Z4pvM+bT8j7e3hzvHHl/l9wc5NvwyGfRyN+xdfzeZbLZRq9Hh//GaxWudc0VnWdD0BJovk8y7rOcGEBw7J4f3lJ5a9gtcr90hKrnQ4MBhi1GkOgBKDrDD0Po1SCoyPKlkU/jSbAnR3uJKYoYJrgeVMUz8MwzfHebneM7u3x/eqKjSzw3cMDvysVIkVBlYsSlc+yVBVWVohcFxVQgSgNvgQBwnXxFYX14+Mkmq5Wi8h1GQQBQmJZZxgGAcJx8CGJpjHHmWJhvJeVcvj8zH67zc+DA7RiMdl8fIR2mzCK2E9jmeBkNPqeN4sBFIvQ66HVavRV9XWkMkE5Z/E0syqVfgKNg7nFRX6cn6OnsVZrfOjpoM7OMOp17kYjCsBLGgwti9NmkxPTRCkUXjHHYTDZMw3q6QkaDSLL4qttj7GZX+50+FKvw/Y2J9fXKN1uIk1k+oeHqFtbRELwybY5nXuGcXRtjaamJUdDjtTFBeu7u7NYJihRIej7PrckRyMMAoQQbNg2t1nvzr2+fJ+bOa1w8qHMevML9g8mAb+SwY+XcAAAAABJRU5ErkJggg==",
+        "iconSize": 15.0,
+        "alpha": 1.0
+      },
+      "Morrénicos": {
+        "type": "icon",
+        "iconUrl": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABYAAAAWCAYAAADEtGw7AAAACXBIWXMAAA7EAAAOxAGVKw4bAAACDUlEQVQ4jb2VS2sTURiGn5nEJJNbM6JpVIxtvUStoWldeCkoVq2ldKGiWzciqH9AXAgu3bhWf0IR1JVgdeHCegUhRCGFYo2CxkRsaBPatMmMi0+YlGTaJmpfmMX3nfc85z0XGCf/Sc61Akf+kpcDjDpwPMq7wzF8rRA/fGVhPE0CyNaBt0eoHOtGbymryc/xtFU2dcYP30LVgHMHV/Y2Bf5VBIe6Ou+yYBMozkFAk/riAJTKktqhQrYAug/c65oE33sKhgFnD0AkJL27Y6D7YbgXbozC/i64fHIFcCqDvlmHI3uk7grDZBZ8bsvT0wGLFVno9gXwuhqHqgUrVQOlULIagz3y1epEHEwT8jOwMWi/21qwGW5jvmIQBJl86xEMJaBcgcfv4dppSf8kCckMXDoOAQ+MvoLpIh7boyiVcWbycmmGKUCfBzQD2ttAVcQX0MDvhqAGs/NQXoRMHpcteOcmZga6Wf9yAvpjcPO8NbZ7C6S+wLYNMtYfk77ug0O7IOSldP+1DRjgWQq+T0vCHRFJ5PfIhT3/KM/s6il5cnfGIB6Fo3vhR4GqbWKAkT54kYbOMEx8gwdvINEBQ73gdIDrz4yFCszOyaKNVAcOemG4z5qsqtAeAgW4Mmj5NBdcP9MY2hBcq3gU9m0FRVnOtQpw8jNg8ql5DExml7KWFFM5OqdyrWDrtWa/pn+m33kaje8YSQEGAAAAAElFTkSuQmCC",
+        "iconSize": 16.0,
+        "alpha": 1.0
+      },
+      "Mississippi Valley (MVT)": {
+        "type": "icon",
+        "iconUrl": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABMAAAAQCAYAAAD0xERiAAAACXBIWXMAAA7EAAAOxAGVKw4bAAABcElEQVQ4jWNhoCJgoblhoQyhzJ8EP53mZeHlxSb//s/7eXvf720nyrBPgp8muAi5GPIx82F1wd73ewvcxN0m7Xq56ytew0JFQyV4mHlicRnEwMDAYM1vLbb57ebZDAwMUXgN+/z381xHAUd+nCYxMDBwMHEwKHIo+nsKeWptf7f9GlbD3PjdnLS4tNyYGZnxmcXAwMDAYMxrzPX45+MZDAwMdlgN42Tl7FXnUicqhhkZGBn0efSt/zD8Cdvzbs8qDMPYGNlEiDEIBniZeZkYGRg1sLrs079PHc9+PZsixSZFlGGnPp26ufvd7iashu18u3MqJyNnkpSQlBEhg25/v/3vB8OPCmQxjPD5/+9/7tVvVw9oc2mz4jLoH8M/hqtfrx7Z9W7XBryGbXy38Zgno+cOdU51XxZG7HFx5vOZr4xMjKno4lhV87DyJG97t+2uCKsI1uz09OfTDXve77lFlGGrX6x+zcDAgDsL4ABULTUAMsZt31j7UmYAAAAASUVORK5CYII=",
+        "iconSize": 14.0,
+        "alpha": 1.0
+      },
+      "Mississippi Valley": {
+        "type": "icon",
+        "iconUrl": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABMAAAAQCAYAAAD0xERiAAAACXBIWXMAAA7EAAAOxAGVKw4bAAABcElEQVQ4jWNhoCJgoblhoQyhzJ8EP53mZeHlxSb//s/7eXvf720nyrBPgp8muAi5GPIx82F1wd73ewvcxN0m7Xq56ytew0JFQyV4mHlicRnEwMDAYM1vLbb57ebZDAwMUXgN+/z381xHAUd+nCYxMDBwMHEwKHIo+nsKeWptf7f9GlbD3PjdnLS4tNyYGZnxmcXAwMDAYMxrzPX45+MZDAwMdlgN42Tl7FXnUicqhhkZGBn0efSt/zD8Cdvzbs8qDMPYGNlEiDEIBniZeZkYGRg1sLrs079PHc9+PZsixSZFlGGnPp26ufvd7iashu18u3MqJyNnkpSQlBEhg25/v/3vB8OPCmQxjPD5/+9/7tVvVw9oc2mz4jLoH8M/hqtfrx7Z9W7XBryGbXy38Zgno+cOdU51XxZG7HFx5vOZr4xMjKno4lhV87DyJG97t+2uCKsI1uz09OfTDXve77lFlGGrX6x+zcDAgDsL4ABULTUAMsZt31j7UmYAAAAASUVORK5CYII=",
+        "iconSize": 14.0,
+        "alpha": 1.0
+      },
+      "Metamorfogénicos": {
+        "type": "icon",
+        "iconUrl": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABIAAAAWCAYAAADNX8xBAAAACXBIWXMAAA7EAAAOxAGVKw4bAAABQUlEQVQ4je3TsUvUYRgH8I+HXTeEuUScBF6Ww/kXNAhBRnE3OMjNDQZCkHAQBJ1Gv4O7gkCJGiK4Bh1rUiRECIdaBOem4C4qCmqzQTz0Gg4H4d5fd+Dg0Hd8eZ4Pz/u8vP2OKf0nG5qgfoXxKt/jmkqkt/mwweWO0CiZn3wqcu8ZtU5IkenfLGY4G5zoPCIGXvLqFoURJiP2tM+TDVay3JghMR93tcPcIXGVm09o3Geqj8Rn3pYYygauG1z2GGqkH7MJr0klQ8VxEJxGmVRcTVdQL/kP9Qj9oNniVN8/mg7wjf0gNEjuLssPGLoQQL6izK9z3A5CT3kfcekRazmuFTgy3Bta7/h4kXzEnyAEEbu4fobZLSoPGdCeYqdJeYmFTpMGl/2cF3OszrLewjD5CvVQfeyrVfmC0D/tHuolxwb9BYBwQSXy6G8dAAAAAElFTkSuQmCC",
+        "iconSize": 13.0,
+        "alpha": 1.0
+      },
+      "Mantos": {
+        "type": "icon",
+        "iconUrl": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAICAYAAADjoT9jAAAACXBIWXMAAA7EAAAOxAGVKw4bAAAA2klEQVQokWNhoDFgwRAxsFNl+M9QzMAnKMzAwsxGlCn/Gf4x/Pj6muH7100MF49swW2BnnUVg6BoHYOaETsDExPpzn3zNIXhP8NehktHXLFbwMhYxaBhwk66yVAgIs3I8Pu3CwPDvyyGS8emYVrw7+8fsg2Hgd8/GRgYGd/CuGhxwFLAcPnYBAYNE34GVuKCHwH+MzA8uv2b4cndpQwXj67EbsHlwwsYzD3XMZzcWcrAzqHAwMRMXHD9//+P4cf3VwzMrPMYLh6+gOJkDMUnt39iYGCoJdH5OAEABTE9Y/KUNVQAAAAASUVORK5CYII=",
+        "iconSize": 18.0,
+        "alpha": 1.0
+      },
+      "Epitermales indiferenciados": {
+        "type": "icon",
+        "iconUrl": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABIAAAASCAYAAABWzo5XAAAACXBIWXMAAA7EAAAOxAGVKw4bAAABVElEQVQ4jb3UPUtCARTG8b94JVMXBSNEKOveTQh1cBKHaFBxkeBumYFBSJAOLioYKISBELS4qEsfwi1wcnOwSd0CpSgadGppEEN8yVd6tnMO/HimI7ChCP8JqQAt8LUWpFRyrlYj9fvE14FUksSl0YimWuUO+FwJ0usJZ7McWCzovF5uu12uV4EEUSQSCGAAsFrxdbukgY+lIEniJpXicDjncuzLMvfNJhfLQILJRMTvZ2u4sNlQiCKeZhMj8L4Q5HKRisfZG99nMux2OjzW68iLQIJOx5XXi2L8YLeD2cxJq8VOr8fbn5As8xAMYpzWFCCdRh+NUqpW8c2ECgU0lQpnHs8sBhwOMBhwO52YazVep0KNBqVwGN1sZpBkEm0iwRPgnoDyebaLRY7tdl7K5XkUtNsciSLmVmvQ6heKxVACp6HQfGQk3xONgB7wvBQzko39ox9b+U6x8LI2/gAAAABJRU5ErkJggg==",
+        "iconSize": 13.0,
+        "alpha": 1.0
+      },
+      "Epitermales de intermedia sulfuración": {
+        "type": "icon",
+        "iconUrl": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAASCAYAAABb0P4QAAAACXBIWXMAAA7EAAAOxAGVKw4bAAABSklEQVQ4jd3Uv0vUYRwH8JcmgugNwvljsKVB5RDOH5Sg18EtQZMhpjSo6BJXQ4NRCQqKHN4SglFrKCG65OgfoISjIErqYBCiiPgHhGKD31v0lFNv8r08vD/wvB4+y1Mkzym6H2AVDWGSG7zNC1jP9BPq9kkf8/dO4CNeJXncStkqX5Z5cRewOML7OGXwkvYt2g75dSuwlrFhopneRXiR1CGJ24DVT+mc4cGPYNCMd7Rs07fH7I3ABqY+UFeCbeziG8KEmnmzxzz+5QSW0NpDLBT0Z1g7x8AITesM/2E8F7AgQnqAGljCKE7xEEPnZ3GCju98xdG1YAWDH4kWBr0SC5mXcBJc+kTjChM7JK8DS6O8jlGeGbRkWQFCFHQTTxHBZlawmsleor+vQC4mQWSOz7s8zwoeMNfPzxy9TM4C5+QSiNUbYpeS9+/rP7MjPuP/6LiIAAAAAElFTkSuQmCC",
+        "iconSize": 15.0,
+        "alpha": 1.0
+      },
+      "Epitermales de baja sulfuración": {
+        "type": "icon",
+        "iconUrl": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABMAAAATCAYAAAByUDbMAAAACXBIWXMAAA7EAAAOxAGVKw4bAAABQUlEQVQ4jdXUPSjncRwH8NePH9INdPLP4KGUh04GFsuZdIuV38BwHlIi/2Q71ynlYeNIMZyov9yVMComZTbYLFaGq5usHgZ/wuH/97B4b+/P8Pp+vssn9IYJ3zUWfmTqH4OvxsqJh/TGSByy/xosLGBog5yIRdS9GPvMjwGKS1DPp3wat9l7CRZmMhARwHey2/mF6mdjET8jCjKSvRi1VFTRvMhW2tg0udt0td6bfyOjmwWUpY0dsdTDhyDZ/6IQJaigtIG2Cf6kxA6IjdDSkuzriLCDL1fb6WVGOtgaqx1kXW9Vi05UJnvp1R9js8QHmXsUO6Gmn6axW7MqLN97cBhxxi6YDzh7EEvw+ytB4OmUoYi8BCMY/Q+LkzNJdhPjK1yk8BxTtEnj7dkNNkcW+jZTKXdz/iCGU+w+z7qbN71nl9G5OSVhta7kAAAAAElFTkSuQmCC",
+        "iconSize": 14.0,
+        "alpha": 1.0
+      },
+      "Epitermales baja sulfuración": {
+        "type": "icon",
+        "iconUrl": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABMAAAATCAYAAAByUDbMAAAACXBIWXMAAA7EAAAOxAGVKw4bAAABQUlEQVQ4jdXUPSjncRwH8NePH9INdPLP4KGUh04GFsuZdIuV38BwHlIi/2Q71ynlYeNIMZyov9yVMComZTbYLFaGq5usHgZ/wuH/97B4b+/P8Pp+vssn9IYJ3zUWfmTqH4OvxsqJh/TGSByy/xosLGBog5yIRdS9GPvMjwGKS1DPp3wat9l7CRZmMhARwHey2/mF6mdjET8jCjKSvRi1VFTRvMhW2tg0udt0td6bfyOjmwWUpY0dsdTDhyDZ/6IQJaigtIG2Cf6kxA6IjdDSkuzriLCDL1fb6WVGOtgaqx1kXW9Vi05UJnvp1R9js8QHmXsUO6Gmn6axW7MqLN97cBhxxi6YDzh7EEvw+ytB4OmUoYi8BCMY/Q+LkzNJdhPjK1yk8BxTtEnj7dkNNkcW+jZTKXdz/iCGU+w+z7qbN71nl9G5OSVhta7kAAAAAElFTkSuQmCC",
+        "iconSize": 14.0,
+        "alpha": 1.0
+      },
+      "Epitermales de alta sulfuración": {
+        "type": "icon",
+        "iconUrl": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABIAAAAQCAYAAAAbBi9cAAAACXBIWXMAAA7EAAAOxAGVKw4bAAABdklEQVQ4jb3TMUtCYRTG8f+taLGpItClCKKMaAwTikguIWJDNISCoRBcEMTJtoqoQa2hxBC5FkQRWJbiBdtskUBQWkT6AEVw8Qu02OBgUpiZ9GzPGX7v4cDbQ4fS82/Q5SWjqsq618v2n6BMhrtikclymWO9nkpbUDiMNRJhen4eZJlrYLEtKJXibG8P5ubAYGAhnWbGaiX/K2h/n91sloHl5Vr3eBDiceLASMtQqUSfzcbmxUV9JkkgywyfnyM5HERagmIxroxGeqemQFUhnweLBQIB8Ps5qFY5FQTem0LJJJM+H5Zcrta3tuD+HkwmEEUIhdAEg4SBjabQ7S0JSUIYHITXV3h8BI0GEgmw2+HwEFZXcT4/szM+zsu3kCyzdnTEhCzXuk4HT0+ND42NgSjSHY1yA8x+gapVupaWiKysQKHw3eXqEUVwuTBkMiyYzTw0QG43Q5UKd4qCoCjNIQCtFmIx+r9sdHLCG+D8majn8+Yd+/0f+bpt8nyvkkUAAAAASUVORK5CYII=",
+        "iconSize": 13.0,
+        "alpha": 1.0
+      },
+      "Epitermales alta sulfuración": {
+        "type": "icon",
+        "iconUrl": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABIAAAAQCAYAAAAbBi9cAAAACXBIWXMAAA7EAAAOxAGVKw4bAAABdklEQVQ4jb3TMUtCYRTG8f+taLGpItClCKKMaAwTikguIWJDNISCoRBcEMTJtoqoQa2hxBC5FkQRWJbiBdtskUBQWkT6AEVw8Qu02OBgUpiZ9GzPGX7v4cDbQ4fS82/Q5SWjqsq618v2n6BMhrtikclymWO9nkpbUDiMNRJhen4eZJlrYLEtKJXibG8P5ubAYGAhnWbGaiX/K2h/n91sloHl5Vr3eBDiceLASMtQqUSfzcbmxUV9JkkgywyfnyM5HERagmIxroxGeqemQFUhnweLBQIB8Ps5qFY5FQTem0LJJJM+H5Zcrta3tuD+HkwmEEUIhdAEg4SBjabQ7S0JSUIYHITXV3h8BI0GEgmw2+HwEFZXcT4/szM+zsu3kCyzdnTEhCzXuk4HT0+ND42NgSjSHY1yA8x+gapVupaWiKysQKHw3eXqEUVwuTBkMiyYzTw0QG43Q5UKd4qCoCjNIQCtFmIx+r9sdHLCG+D8majn8+Yd+/0f+bpt8nyvkkUAAAAASUVORK5CYII=",
+        "iconSize": 13.0,
+        "alpha": 1.0
+      },
+      "Epitermal indiferenciado (Bonanza": {
+        "type": "icon",
+        "iconUrl": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABIAAAASCAYAAABWzo5XAAAACXBIWXMAAA7EAAAOxAGVKw4bAAABVElEQVQ4jb3UPUtCARTG8b94JVMXBSNEKOveTQh1cBKHaFBxkeBumYFBSJAOLioYKISBELS4qEsfwi1wcnOwSd0CpSgadGppEEN8yVd6tnMO/HimI7ChCP8JqQAt8LUWpFRyrlYj9fvE14FUksSl0YimWuUO+FwJ0usJZ7McWCzovF5uu12uV4EEUSQSCGAAsFrxdbukgY+lIEniJpXicDjncuzLMvfNJhfLQILJRMTvZ2u4sNlQiCKeZhMj8L4Q5HKRisfZG99nMux2OjzW68iLQIJOx5XXi2L8YLeD2cxJq8VOr8fbn5As8xAMYpzWFCCdRh+NUqpW8c2ECgU0lQpnHs8sBhwOMBhwO52YazVep0KNBqVwGN1sZpBkEm0iwRPgnoDyebaLRY7tdl7K5XkUtNsciSLmVmvQ6heKxVACp6HQfGQk3xONgB7wvBQzko39ox9b+U6x8LI2/gAAAABJRU5ErkJggg==",
+        "iconSize": 13.0,
+        "alpha": 1.0
+      },
+      "Diseminados": {
+        "type": "icon",
+        "iconUrl": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABsAAAATCAYAAABhh3Y4AAAACXBIWXMAAA7EAAAOxAGVKw4bAAACh0lEQVRIic3VXUhTcRjH8e/mXkiZOdApzkJxZ9qupAgJRbpQNi/TGeLbheRN4oVeFNIEURQnFkjQRah4kTmXqYh33iWUFXqrLka6FwdDZjDdnC+ti4Mo6cxelH435/yf8/yfz//AgSPjEiP737E44A7wFfBeJHYtOZkPKSmoNzc5kEh47vPx5CKwK1ot73t60NbUwMEBtLfTNDzMDY8HM/D9n2GCwFhXF1pBENfr61BdjUoQMFosvHG7Kf8nWFYWDyoquGs2I3E6xVo4DNvbUFdHfDBIsdXKC7ebh3+FKZXoMjPp7OxEJZGATifW9XrY2oL9fWhsJNHppNJux+n18vRPMUV2NtM2G2lSKUSjYLVCUxMkJIDdDkVF4gH6+lAvLvJoc5N3oRCffxsTBF739yNoNEe1vDyQy8X7+nrxGo3C6ChMTaHJz8fmcHAL+HZuTKfjcVkZpuJiZOPjoFKB0Qgm0+n9oRAkJcHQEJlVVYy5XBjPhen1VKanY+nuJgHAYACl8mTf3BxkZUFGBjQ0iLWCAqRmM7eHhykPBHh7JmYwcD8ujsHJSeJ7e6GlRcROy8wMlJaK2GFGRqC2FvXEBM8CAaaBvVhYoc/Hq+Vl5ElJkJMDUunRQ5cLOjpgYEBcW60nD7C2BjIZqNVoVlcpB2yxsI9yOdMlJZgsFhJMJnHjYVJTobUVdnZgfh5mZ4kuLBAKh4koFEijUWQbG0j8fsIKBS+BqePDf8b2/H7Mfj8329poa26mMDERRW4usrQ05JEIcUtL7Ho8RDQaPgWDDDoczADbx+ZJgd2T7xz7a1xcWeEegNeLcmmJ68BVQA64AK/bfeq+/RjzzsSOJwJ8OUffL3OpP88fo3fIQvl1CC8AAAAASUVORK5CYII=",
+        "iconSize": 20.0,
+        "alpha": 1.0
+      },
+      "Diseminado": {
+        "type": "icon",
+        "iconUrl": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABsAAAATCAYAAABhh3Y4AAAACXBIWXMAAA7EAAAOxAGVKw4bAAACh0lEQVRIic3VXUhTcRjH8e/mXkiZOdApzkJxZ9qupAgJRbpQNi/TGeLbheRN4oVeFNIEURQnFkjQRah4kTmXqYh33iWUFXqrLka6FwdDZjDdnC+ti4Mo6cxelH435/yf8/yfz//AgSPjEiP737E44A7wFfBeJHYtOZkPKSmoNzc5kEh47vPx5CKwK1ot73t60NbUwMEBtLfTNDzMDY8HM/D9n2GCwFhXF1pBENfr61BdjUoQMFosvHG7Kf8nWFYWDyoquGs2I3E6xVo4DNvbUFdHfDBIsdXKC7ebh3+FKZXoMjPp7OxEJZGATifW9XrY2oL9fWhsJNHppNJux+n18vRPMUV2NtM2G2lSKUSjYLVCUxMkJIDdDkVF4gH6+lAvLvJoc5N3oRCffxsTBF739yNoNEe1vDyQy8X7+nrxGo3C6ChMTaHJz8fmcHAL+HZuTKfjcVkZpuJiZOPjoFKB0Qgm0+n9oRAkJcHQEJlVVYy5XBjPhen1VKanY+nuJgHAYACl8mTf3BxkZUFGBjQ0iLWCAqRmM7eHhykPBHh7JmYwcD8ujsHJSeJ7e6GlRcROy8wMlJaK2GFGRqC2FvXEBM8CAaaBvVhYoc/Hq+Vl5ElJkJMDUunRQ5cLOjpgYEBcW60nD7C2BjIZqNVoVlcpB2yxsI9yOdMlJZgsFhJMJnHjYVJTobUVdnZgfh5mZ4kuLBAKh4koFEijUWQbG0j8fsIKBS+BqePDf8b2/H7Mfj8329poa26mMDERRW4usrQ05JEIcUtL7Ho8RDQaPgWDDDoczADbx+ZJgd2T7xz7a1xcWeEegNeLcmmJ68BVQA64AK/bfeq+/RjzzsSOJwJ8OUffL3OpP88fo3fIQvl1CC8AAAAASUVORK5CYII=",
+        "iconSize": 20.0,
+        "alpha": 1.0
+      },
+      "Cuerpos": {
+        "type": "icon",
+        "iconUrl": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABcAAAATCAYAAAB7u5a2AAAACXBIWXMAAA7EAAAOxAGVKw4bAAABwUlEQVQ4jb3Vv2sTYQAG4CchraQmptVYmhargtCgVUREqUh1qYsFFxdXQQoV3HTRRXBy9j+ICC4u6uLiIvijHSpWwaFVRGlLCUGNWJOmcUgKaXNpaKS+cMO99/Hcd9993EVsYSL/G+/EaTxZ16cxjgwmavoQzmMS8xvhkRSP00QmuJlnCtkEJwbpu0L3A069IvuD19jewZkhitOEFziL34F4ksxtjo4SgzkO/aR0gM5wdcw5kkXMcjJGWy8dIbwgP8bDHBdQrsND9B2vwpAingpYtzYMkKjtDhML09NwWRa5dodH99gfYG6Yu8xmubU66zocU2/4Xq48xabynDye1XZ1u6VMvhR0oUmW+LO+W29097G7lc0/QHSeffgciG/j0hhB77BprrPnJeMFbgTiSS6OsKMV/BiJLkYWaro1eBfJf/ke9BJboB2FOnyFlSx2tQAXK0d4Fa7DcXmUp8NE+4l2EdqLI4jXDFrCDD5hjvIihbfk4lytxdbgHyrfi54M6Qg7e+lPMFxgKELqIO0z5H7xLcpUmcmPzCzxtXqvlYZ4NcuYXsaXyvn9ah96z2BlDkrNlqkR3ihlvNvE+K39WfwFB/Vo4YozphUAAAAASUVORK5CYII=",
+        "iconSize": 17.0,
+        "alpha": 1.0
+      },
+      "Cuerpo": {
+        "type": "icon",
+        "iconUrl": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABcAAAATCAYAAAB7u5a2AAAACXBIWXMAAA7EAAAOxAGVKw4bAAABwUlEQVQ4jb3Vv2sTYQAG4CchraQmptVYmhargtCgVUREqUh1qYsFFxdXQQoV3HTRRXBy9j+ICC4u6uLiIvijHSpWwaFVRGlLCUGNWJOmcUgKaXNpaKS+cMO99/Hcd9993EVsYSL/G+/EaTxZ16cxjgwmavoQzmMS8xvhkRSP00QmuJlnCtkEJwbpu0L3A069IvuD19jewZkhitOEFziL34F4ksxtjo4SgzkO/aR0gM5wdcw5kkXMcjJGWy8dIbwgP8bDHBdQrsND9B2vwpAingpYtzYMkKjtDhML09NwWRa5dodH99gfYG6Yu8xmubU66zocU2/4Xq48xabynDye1XZ1u6VMvhR0oUmW+LO+W29097G7lc0/QHSeffgciG/j0hhB77BprrPnJeMFbgTiSS6OsKMV/BiJLkYWaro1eBfJf/ke9BJboB2FOnyFlSx2tQAXK0d4Fa7DcXmUp8NE+4l2EdqLI4jXDFrCDD5hjvIihbfk4lytxdbgHyrfi54M6Qg7e+lPMFxgKELqIO0z5H7xLcpUmcmPzCzxtXqvlYZ4NcuYXsaXyvn9ah96z2BlDkrNlqkR3ihlvNvE+K39WfwFB/Vo4YozphUAAAAASUVORK5CYII=",
+        "iconSize": 17.0,
+        "alpha": 1.0
+      },
+      "Cr tipo alpino": {
+        "type": "icon",
+        "iconUrl": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAACXBIWXMAAA7EAAAOxAGVKw4bAAABHklEQVQ4ja2RwUoCYRSFv8VgYzOLAbVJxkCkaTRKa6G2inqaFvUI0aJXitaFq8JFpUFqm4KmGpwJiTRNiVYJzj+kVmd5uOf7z/2vxB8l/RtAnQ3ZmUXtbZJQpfZC72NgjQCslNY62C0sTwLYOywd39uvow38eu8OuG54AKxaEeSZ4NFA9/auxYPTZj0TBeDs0sHQFcykNh7Q7Q14anbYLhpDb6tocHpusxBXhSYCoFr3yKWjwktrmSjVukc+q49fYRoJgJWlCOWqw2beGPEvblw2crp/XASEZYl4TKFUtsmlYwBc1VwSukJYFgsHrmAmNRLz6vCMhezcdGf8buL/sB8Blbob2tk/ORqbAJ69TkoA9Puf5mOzPUk+uMFv9QWmiU2nf4lIMwAAAABJRU5ErkJggg==",
+        "iconSize": 12.0,
+        "alpha": 1.0
+      },
+      "Brechas": {
+        "type": "icon",
+        "iconUrl": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABIAAAASCAYAAABWzo5XAAAACXBIWXMAAA7EAAAOxAGVKw4bAAACUElEQVQ4jbWTT0iTcRjHP7M5ZeCYgnuVMreZl8SC8M/WSYi5izIw86Agol2MzR128+ClktpFxBledlFPS5HYmC9mLRDS3EIQMxVED4LaZKZtTjRHh5dYaxoG9b19f8/z+/A8D88j5x9J/t9BDQ10CAJ1Z2dcPTjgSk4OnxcXeTU/z8tLgTo70ctkTLS0cEung0QC+vrA4eDOxgYPhoboEEXawmF2LgQ5nRTs7vJeo0HQ6aS3jAyQy+HkBLRaFBYL5tVVPoTD3Aa+ngva22PMbkcYHEytsrQUurtBqwWDAcbHud7VxYuJCZrTQB4PNw8PuSuXg14PoRCsrEAkAiUlkJ8PVmsSbrFwTxS5Fo+zlQIKBnnU1ITM64W1NfD7obcXcnOl+PY27O8nfU0NmooKmmdmcKaAolH0Ph/U1kJ9PQwMgFqdrKCuDrxeaG2F42OYmgKlEm1aawoFR+3tkJkp+cpKCAahqkryggALCxCNQlYWmEwwOUkkDVRezutQiPtGo+Srq8Hlgrw8CATg9BQKC8Fslma2tEQiFmM6DWQ2Mzw8jNNoRBWJgCjC3BwUF0Nbm1Tp0RG43WCzQSDAp+lp3qWBioqIu1z09vTwrKxMmonBAMvLyXaVSojHYXaW460tHvOLUvbIauV5fz+lajUdKhWoVODzJeOJBCgUnPj9PB0ZST2VtBOx23k4NsbU6ChPVCpubG4iE0WIxfi+vs5SdjYOt5u3v/8792gbG/EAnp0dNIJAeTTKmcnER5uNb+flXwj6qYICvgBv/pRzKdDf6Ae8o8BETph73wAAAABJRU5ErkJggg==",
+        "iconSize": 13.0,
+        "alpha": 1.0
+      },
+      "Au (Pb-Zn-Cu) relacionados con intrusivos": {
+        "type": "icon",
+        "iconUrl": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABMAAAATCAYAAAByUDbMAAAACXBIWXMAAA7EAAAOxAGVKw4bAAABG0lEQVQ4jb2SPUvDUBSGH5pLLWJBhzpIEMeKQgu6Sik4uAuu0i5SxR8hiIOruIfY/+CuoKMWHEx7iXESXQuaL6qDXBL6BaEh7/bw3vtwDhxBihGZyQ72OVxcoqzYdfHMNpfAd2LZU4fzkxa6YsPEAwzASSwTgkHrKOKHR4LnzpT302RJMyxbi0MYkhvzRx/iT+BnRFYqIeu1/wKgWCQf7+s15oFbxZZFvlLhzGxzMSLb3EC7MViYtEazQa7ZiPqra+hJ5hRnd2czyRyHj+o2gWLXZfn1hYLi41P8u3u+hGAAEIRoW1W6Y2VvDitxXi/zDqwq7vfxe5IdYkcr5YTJZk12Ms9H293jV7HVpQARJ5LZNrptpzRZ0qQq+wMubks2etMydQAAAABJRU5ErkJggg==",
+        "iconSize": 14.0,
+        "alpha": 1.0
+      },
+      "Aluviales": {
+        "type": "icon",
+        "iconUrl": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAPCAYAAADkmO9VAAAACXBIWXMAAA7EAAAOxAGVKw4bAAABjklEQVQ4jb3TvUtCYRTH8a8vpXUliBsVhLVYDa01CY4tIojm4NJQEGRBBZeghkRxqMUtAse2gkQR7+i/EAhRqAm9SIOBYi/mTaKpsrqZRfTbHs7Dh3MOHD1/HP2/gaEQnosL5hWFEUHApNOhq9W47+7mzGpl325nW6Oh+i3o9eJQFHZEkYHpaTCb35VNuRy9ySQTPh/BWIyA08nWl6DVyuLwMJt+P4JWq965xQJLS6AodASDbEYijM/N4VEDR202pEAA4as1NKa9HUIhWFtjKhrF5XIRfQf29bHg9zPUCtYYSYLVVST4ABqNCAbDTzkQRahWMb28X8FCgdLDA9dGIz0/AYtFKJXIfgLrdXbdbgaTybcFt5KNDa4yGVY+gUBaljmw23lKJHBotXQ2g+p1kCSOUynW83nO1UCAPVkmI4rczczQv7zMiNmMpfHD5SU3kQj5eJxsOs06vI2rBgIclsvMhsOMhcNMdnUxJIoIbW1obm+pFYucPD4iA6dqnTe75SPgqFKBSqXZ8K2Dv8ozkVp5RM7ZnaUAAAAASUVORK5CYII=",
+        "iconSize": 15.0,
+        "alpha": 1.0
+      },
+      "NULL": {
+        "type": "icon",
+        "iconUrl": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAYAAACNMs+9AAAACXBIWXMAAA7EAAAOxAGVKw4bAAAAwUlEQVQYlWNhIBKwkKUwaHlnMo+YkNefH7/fvXv4rGdHVstNDIWBi9rqFB3NGtl5uRkYGRgYOK/c9ndoyDA70DDjAYpCITXZaHZeboY0Dk0GLgYWhok6DKLv7z2LZ2BgaERRyMjIxMzAwMDw+/8/hj+M/xgYGBgYmJkZmTCsfnvr8XoxHdWS+T8hzvr58ev729uObcFQuD62ounvt7pPQhqK9n9+/n5/dfWueRcWrDuNzdefN6U3NTMwMDQTDB58AABIbEEHW5n5/AAAAABJRU5ErkJggg==",
+        "iconSize": 7.0,
+        "alpha": 1.0
+      }
+    },
+    "labels": {
+      "Uranio en rocas volcánicas": "Uranio en rocas volcánicas",
+      "Óxidos de Fe-Cu-Au (IOCG)": "Óxidos de Fe-Cu-Au (IOCG)",
+      "Vetas": "Vetas",
+      "Sulfuro masivo volcanógenico de Pb-Zn-Cu": "Sulfuro masivo volcanogénico de Pb-Zn-Cu",
+      "Sulfuro masivo volcanogénico de Cu-Zn-Pb-Au-Ag": "Sulfuro masivo volcanogénico de Cu-Zn-Pb-Au-Ag",
+      "Sulfuros masivos volcanogénicos de Cu-Zn-Pb-Au-Ag": "Sulfuro masivo volcanogénico de Cu-Zn-Pb-Au-Ag",
+      "Stockworks": "Stockworks",
+      "Stockwork": "Stockworks",
+      "Skarn": "Skarn",
+      "Sedex en rocas carbonatadas": "Sedex en rocas carbonatadas",
+      "Red Bed (Capas Rojas)": "Red Bed (Capas Rojas)",
+      "Pórfidos de Cu-Mo": "Pórfidos de Cu-Mo",
+      "Pórfidos  Cu-Mo": "Pórfidos de Cu-Mo",
+      "Pórfidos de Cu-Au": "Pórfidos de Cu-Au",
+      "Pórfidos  Cu-Au": "Pórfidos de Cu-Au",
+      "Polimetálicos con superposición epitermal": "Polimetálicos con superposición epitermal",
+      "Placeres": "Placeres",
+      "Placer": "Placeres",
+      "Orogénicos de Au (Pb-Zn-Cu)": "Orogénicos de Au (Pb-Zn-Cu)",
+      "Morrénicos": "Morrénicos",
+      "Mississippi Valley (MVT)": "Mississippi Valley (MVT)",
+      "Mississippi Valley": "Mississippi Valley (MVT)",
+      "Metamorfogénicos": "Metamorfogénicos",
+      "Mantos": "Mantos",
+      "Epitermales indiferenciados": "Epitermales indiferenciados",
+      "Epitermales de intermedia sulfuración": "Epitermales de intermedia sulfuración",
+      "Epitermales de baja sulfuración": "Epitermales de baja sulfuración",
+      "Epitermales baja sulfuración": "Epitermales de baja sulfuración",
+      "Epitermales de alta sulfuración": "Epitermales de alta sulfuración",
+      "Epitermales alta sulfuración": "Epitermales de alta sulfuración",
+      "Epitermal indiferenciado (Bonanza": "Epitermal indiferenciado (Bonanza",
+      "Diseminados": "Diseminados",
+      "Diseminado": "Diseminados",
+      "Cuerpos": "Cuerpos",
+      "Cuerpo": "Cuerpos",
+      "Cr tipo alpino": "Cr tipo alpino",
+      "Brechas": "Brechas",
+      "Au (Pb-Zn-Cu) relacionados con intrusivos": "Au (Pb-Zn-Cu) relacionados con intrusivos",
+      "Aluviales": "Aluviales",
+      "NULL": "Otros"
+    }
+  },
+  "franjas": {
+    "field": "FRANJA",
+    "styles": {
+      "I": {
+        "type": "fill",
+        "fillColor": "rgba(138, 91, 69, 1.000)",
+        "strokeColor": "rgba(110, 110, 110, 1.000)",
+        "strokeWidth": 0.4
+      },
+      "II": {
+        "type": "fill",
+        "fillColor": "rgba(230, 153, 0, 1.000)",
+        "strokeColor": "rgba(110, 110, 110, 1.000)",
+        "strokeWidth": 0.4
+      },
+      "III": {
+        "type": "fill",
+        "fillColor": "rgba(255, 191, 233, 1.000)",
+        "strokeColor": "rgba(110, 110, 110, 1.000)",
+        "strokeWidth": 0.4
+      },
+      "III-a": {
+        "type": "fill",
+        "fillColor": "rgba(255, 190, 190, 1.000)",
+        "strokeColor": "rgba(110, 110, 110, 1.000)",
+        "strokeWidth": 0.4
+      },
+      "IV": {
+        "type": "fill",
+        "fillColor": "rgba(0, 95, 163, 1.000)",
+        "strokeColor": "rgba(110, 110, 110, 1.000)",
+        "strokeWidth": 0.4
+      },
+      "IX": {
+        "type": "fill",
+        "fillColor": "rgba(255, 210, 128, 1.000)",
+        "strokeColor": "rgba(110, 110, 110, 1.000)",
+        "strokeWidth": 0.4
+      },
+      "V": {
+        "type": "fill",
+        "fillColor": "rgba(115, 178, 255, 1.000)",
+        "strokeColor": "rgba(110, 110, 110, 1.000)",
+        "strokeWidth": 0.4
+      },
+      "VI": {
+        "type": "fill",
+        "fillColor": "rgba(0, 168, 230, 1.000)",
+        "strokeColor": "rgba(110, 110, 110, 1.000)",
+        "strokeWidth": 0.4
+      },
+      "VII": {
+        "type": "fill",
+        "fillColor": "rgba(115, 178, 255, 1.000)",
+        "strokeColor": "rgba(110, 110, 110, 1.000)",
+        "strokeWidth": 0.4
+      },
+      "VIII": {
+        "type": "fill",
+        "fillColor": "rgba(38, 115, 0, 1.000)",
+        "strokeColor": "rgba(110, 110, 110, 1.000)",
+        "strokeWidth": 0.4
+      },
+      "X": {
+        "type": "fill",
+        "fillColor": "rgba(85, 255, 0, 1.000)",
+        "strokeColor": "rgba(110, 110, 110, 1.000)",
+        "strokeWidth": 0.4
+      },
+      "XI": {
+        "type": "fill",
+        "fillColor": "rgba(190, 232, 255, 1.000)",
+        "strokeColor": "rgba(110, 110, 110, 1.000)",
+        "strokeWidth": 0.4
+      },
+      "XII": {
+        "type": "fill",
+        "fillColor": "rgba(255, 255, 0, 1.000)",
+        "strokeColor": "rgba(110, 110, 110, 1.000)",
+        "strokeWidth": 0.4
+      },
+      "XIII": {
+        "type": "fill",
+        "fillColor": "rgba(172, 204, 102, 1.000)",
+        "strokeColor": "rgba(110, 110, 110, 1.000)",
+        "strokeWidth": 0.4
+      },
+      "XIV": {
+        "type": "fill",
+        "fillColor": "rgba(168, 0, 0, 1.000)",
+        "strokeColor": "rgba(110, 110, 110, 1.000)",
+        "strokeWidth": 0.4
+      },
+      "XIX-A": {
+        "type": "fill",
+        "fillColor": "rgba(130, 130, 130, 1.000)",
+        "strokeColor": "rgba(110, 110, 110, 1.000)",
+        "strokeWidth": 0.4
+      },
+      "XIX": {
+        "type": "fill",
+        "fillColor": "rgba(204, 204, 204, 1.000)",
+        "strokeColor": "rgba(110, 110, 110, 1.000)",
+        "strokeWidth": 0.4
+      },
+      "XVI": {
+        "type": "fill",
+        "fillColor": "rgba(150, 219, 242, 1.000)",
+        "strokeColor": "rgba(110, 110, 110, 1.000)",
+        "strokeWidth": 0.4
+      },
+      "XVII": {
+        "type": "fill",
+        "fillColor": "rgba(191, 210, 255, 1.000)",
+        "strokeColor": "rgba(110, 110, 110, 1.000)",
+        "strokeWidth": 0.4
+      },
+      "XVIII": {
+        "type": "fill",
+        "fillColor": "rgba(255, 128, 128, 1.000)",
+        "strokeColor": "rgba(110, 110, 110, 1.000)",
+        "strokeWidth": 0.4
+      },
+      "XV_": {
+        "type": "fill",
+        "fillColor": "rgba(255, 255, 115, 1.000)",
+        "strokeColor": "rgba(110, 110, 110, 1.000)",
+        "strokeWidth": 0.4
+      },
+      "XV": {
+        "type": "fill",
+        "fillColor": "rgba(255, 255, 115, 1.000)",
+        "strokeColor": "rgba(110, 110, 110, 1.000)",
+        "strokeWidth": 0.4
+      },
+      "XX": {
+        "type": "fill",
+        "fillColor": "rgba(179, 214, 156, 1.000)",
+        "strokeColor": "rgba(110, 110, 110, 1.000)",
+        "strokeWidth": 0.4
+      },
+      "XXI-A": {
+        "type": "fill",
+        "fillColor": "rgba(255, 255, 115, 1.000)",
+        "strokeColor": "rgba(110, 110, 110, 1.000)",
+        "strokeWidth": 0.4
+      },
+      "XXI-B": {
+        "type": "fill",
+        "fillColor": "rgba(255, 255, 115, 1.000)",
+        "strokeColor": "rgba(110, 110, 110, 1.000)",
+        "strokeWidth": 0.4
+      },
+      "XXI-C": {
+        "type": "fill",
+        "fillColor": "rgba(204, 204, 204, 1.000)",
+        "strokeColor": "rgba(110, 110, 110, 1.000)",
+        "strokeWidth": 0.4
+      },
+      "XXII": {
+        "type": "fill",
+        "fillColor": "rgba(200, 200, 200, 1.000)",
+        "strokeColor": "rgba(120, 120, 120, 1.000)",
+        "strokeWidth": 1.0
+      },
+      "XXIII": {
+        "type": "fill",
+        "fillColor": "rgba(255, 151, 23, 1.000)",
+        "strokeColor": "rgba(110, 110, 110, 1.000)",
+        "strokeWidth": 0.4
+      }
+    },
+    "labels": {
+      "I": "I - Franja de Au en rocas meta-sedimentarias del Ordovícico y Silúrico-Devónico",
+      "II": "II - Franja de depósitos orogénicos de Au-Pb-Zn-Cu del Carbonífero-Pérmico",
+      "III": "III - Franja de depósitos de Li- U-W-Sn-Mo, Au-Cu-Pb-Zn relacionados con intrusivos y pórfidos-skarn de Cu-Ag del Pérmico Triásico",
+      "III-a": "III-a - Franja de depósitos de Li- U-W-Sn-Mo, Au-Cu-Pb-Zn relacionados con intrusivos y pórfidos-skarn de Cu-Ag del Pérmico Triásico",
+      "IV": "IV - Franja de pórfidos Cu-Mo del Jurásico medio",
+      "IX": "IX - Franja de depósitos de Au-Pb-Zn-Cu relacionados con intrusivos de Cretácico superior",
+      "V": "V - Franja de depósitos de Cu-Fe-Au (IOCG) del Jurásico medio–superior",
+      "VI": "VI - Franja de pórfidos y skarns de Cu-Au del Jurásico superior",
+      "VII": "VII - Franja de sulfuros masivos volcanogénicos de Cu-Zn-Au del Jurásico superiorAlbiano",
+      "VIII": "VIII - Franja de depósitos de Cu-Fe-Au (IOCG) del Cretácico inferior",
+      "X": "X - Franja de pórfidos de Cu-Mo del Cretácico superior",
+      "XI": "XI - Franja de sulfuros masivos volcanogénicos de Pb-Zn-Cu del Cretácico superiorPaleoceno",
+      "XII": "XII - Franja de epitermales de Au-Ag del Cretácico superior-Paleoceno",
+      "XIII": "XIII - Franja de pórfidos de Cu-Mo y depósitos polimetálicos relacionados con intrusivos del Paleoceno-Eoceno",
+      "XIV": "XIV - Franja de depósitos de Au-Cu-Pb-Zn relacionados con intrusiones del Eoceno",
+      "XIX-A": "XIX-A - Franja de depósitos de U-Li y epitermales asociados al Magmatismo de trasarco del Mio plioceno",
+      "XIX": "XIX - Franja de depósitos de Sn-Cu-W relacionados con intrusivos del Oligoceno- Mioceno y epitermales de Ag-Pb-Zn (Au)",
+      "XVI": "XVI - Franja de depósitos tipo Mississippi Valley (MVT) de Pb-Zn del Eoceno-Mioceno",
+      "XVII": "XVII - Franja epitermales de Au-Ag del Eoceno y depósitos polimetálicos del Eoceno- Oligoceno-Mioceno",
+      "XVIII": "XVIII - Franja de epitermales de Au-Ag del Oligoceno",
+      "XV_": "XV - Franja de pórfidos-skarns de Cu-Mo (Au, Zn) y depósitos de Cu-Au-Fe relacionados con intrusivos del Eoceno-Oligoceno",
+      "XV": "XV - Franja de pórfidos-skarns de Cu-Mo (Au, Zn) y depósitos de Cu-Au-Fe relacionados con intrusivos del Eoceno-Oligoceno",
+      "XX": "XX - Franja de pórfidos de Cu-Mo (Au), skarns de Pb-Zn-Cu (Ag) y depósitos polimetálicos relacionados con intrusiones del Mioceno",
+      "XXI-A": "XXI-A - Franja de depósitos de U-Li y epitermales asociados al Magmatismo de trasarco del Mio plioceno",
+      "XXI-B": "XXI-B - Franja de epitermales de Au-Ag hospedados en rocas sedimentarias",
+      "XXI-C": "XXI-C - Franja de depósitos polimetálicos de Pb-Zn-Cu con superposición epitermal de Au-Ag",
+      "XXII": "XXII - Franja de depósitos de W-Mo-Cu relacionados con intrusivos del Mioceno superior",
+      "XXIII": "XXIII - Franja de epitermales de Au-Ag del Mio-Plioceno"
+    }
+  }
+}
