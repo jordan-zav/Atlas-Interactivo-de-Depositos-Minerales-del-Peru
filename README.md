@@ -1,4 +1,9 @@
-# ⚖️ Licencia / License (Dual Licensing)
+# Atlas Interactivo de Depósitos Minerales del Perú
+
+Atlas interactivo portátil para visualizar depósitos minerales y franjas metalogenéticas del Perú desde un visor web local.
+
+
+## ⚖️ Licencia (Licencia Dual)
 
 Este proyecto se distribuye bajo un modelo de **Licencia Dual**:
 
@@ -8,9 +13,6 @@ Este proyecto se distribuye bajo un modelo de **Licencia Dual**:
 Para más detalles, consulta el archivo [LICENSE](LICENSE).
 
 ---
-# Atlas Interactivo de Depósitos Minerales del Perú
-
-Atlas interactivo portátil para visualizar depósitos minerales y franjas metalogenéticas del Perú desde un visor web local.
 
 ## Uso rápido
 
@@ -42,4 +44,4 @@ Atlas interactivo portátil para visualizar depósitos minerales y franjas metal
 
 ## Licencia
 
-Este proyecto está sujeto a los términos de la licencia GNU GPLv3 y el acuerdo de Licencia Dual descrito al inicio de este documento. Ver el archivo [LICENSE](LICENSE) para más detalles.
+Este proyecto está sujeto a los términos de la licencia GNU GPLv3 y el acuerdo de Licencia Dual descrito anteriormente. Ver el archivo [LICENSE](LICENSE) para más detalles.
