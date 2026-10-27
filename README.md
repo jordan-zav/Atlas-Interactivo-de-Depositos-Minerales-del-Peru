@@ -1,47 +1,58 @@
-# Atlas Interactivo de Depósitos Minerales del Perú
+<p align="center"><strong>English</strong> · <a href="README.es.md">Español</a></p>
 
-Atlas interactivo portátil para visualizar depósitos minerales y franjas metalogenéticas del Perú desde un visor web local.
+# Interactive Atlas of Mineral Deposits in Peru
 
+**Explore mineral deposits and metallogenic belts in a portable local web viewer.**
 
-## ⚖️ Licencia (Licencia Dual)
+Open the atlas, search deposits or belts, draw a polygon or rectangle to query
+an area and export results to CSV. The viewer runs on your own computer.
 
-Este proyecto se distribuye bajo un modelo de **Licencia Dual**:
+## Quick start
 
-1. **Uso de Código Abierto (GNU GPLv3):** Puedes usar, estudiar, modificar y redistribuir este software de forma gratuita, siempre y cuando cualquier versión modificada o distribución derivada también sea 100% de código abierto bajo la licencia GNU GPLv3.
-2. **Uso Comercial / Privado (Licencia Comercial):** Si deseas integrar este código en software propietario, cerrado o comercial (sin la obligación de abrir tu propio código fuente bajo la GPLv3), debes adquirir una licencia comercial exclusiva. Por favor, ponte en contacto con el autor para acordar los términos.
+1. On Windows, run [iniciar_atlas.bat](iniciar_atlas.bat).
+2. The launcher opens the local viewer in your browser.
+3. Search a deposit or belt, toggle the belt layer, or draw a query area.
+4. Export the results when needed.
+5. Close the console window to stop the local server.
 
-Para más detalles, consulta el archivo [LICENSE](LICENSE).
+## Requirements and portability
 
----
+Windows with PowerShell is sufficient when the prepared build directory is
+already present. Python 3 is needed to regenerate viewer data from the source
+GeoPackage and QML files. The project uses relative paths so its folder can be
+moved without rewriting absolute paths.
 
-## Uso rápido
+## Included features
 
-1. Ejecuta `iniciar_atlas.bat`.
-2. Se abrirá un `localhost` en tu navegador con el visor.
-3. Cierra la ventana de consola para detener el servidor.
+- Mineral-deposit display and search.
+- Metallogenic-belt visibility controls and search.
+- Spatial queries using drawn polygons or rectangles.
+- CSV export and local execution.
 
-## Funcionalidad
+Inspect source attribution, coordinate reference information and data coverage
+before using the displayed records for interpretation. This viewer does not
+turn its inventory into a mineral-resource estimate.
 
-- Visualización de yacimientos mineros.
-- Activación y desactivación de la franja metalogenética.
-- Consulta espacial dibujando polígonos o rectángulos.
-- Búsqueda de yacimientos y franjas.
-- Exportación de resultados a CSV.
-- Ejecución portable con rutas relativas.
+## Repository layout
 
-## Estructura
+| Path | Contents |
+| --- | --- |
+| data | Original GeoPackage data and QML styles |
+| build | Prepared data used by the web viewer |
+| web | Atlas interface |
+| scripts/build_data.py | GeoPackage conversion and QML symbology extraction |
+| scripts/start_server.ps1 | Portable local server |
 
-- `data/`: fuentes originales en `GeoPackage` y `QML`.
-- `build/`: datos listos para el visor web.
-- `web/`: interfaz del atlas.
-- `scripts/build_data.py`: conversión desde `gpkg` y extracción de simbología `qml`.
-- `scripts/start_server.ps1`: servidor local portátil.
+The [Spanish quick-start note](LEEME.md) is retained for existing users.
 
-## Requisitos
+## Licensing
 
-- Windows con PowerShell.
-- Python 3 solo si necesitas regenerar `build/` a partir de los datos fuente.
+The repository describes a dual-licensing model: open-source distribution under
+GNU GPL v3, with separate commercial licensing for proprietary integration.
+The governing open-source terms are in [LICENSE](LICENSE). Contact the author
+to discuss a separate commercial agreement; third-party data retain their own terms.
 
-## Licencia
+## Contact
 
-Este proyecto está sujeto a los términos de la licencia GNU GPLv3 y el acuerdo de Licencia Dual descrito anteriormente. Ver el archivo [LICENSE](LICENSE) para más detalles.
+Jordan Zavaleta — [GisGeo Dev](https://gisgeo.dev) ·
+[jordanzav@gisgeo.dev](mailto:jordanzav@gisgeo.dev).
